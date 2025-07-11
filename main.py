@@ -3,6 +3,7 @@ from discord.ext import tasks, commands
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import json
 from datetime import datetime
@@ -11,7 +12,7 @@ import time
 import random
 import string
 
-TOKEN = "NzQ5NDMyMTAyNzY5ODczMTYz.fakeprefix_MTM5MjkxNDQzOTI2Njc2NzAwOQ.GCsZ55.bw7wveWKkBk9Qg2IC8HIZg8yqlshWGMfYKC_dY"
+TOKEN = "authtokens_MTM5MjkxNDQzOTI2Njc2NzAwOQ.GSa1Nx.iQf5c4274Dwc00mBKQmFBzhZNDkmE84E7ddmuo"
 TOKEN = TOKEN.split("_", 1)[1]
 CHANNEL_ID = 1386901509974917151
 
@@ -60,8 +61,7 @@ class UpdateTrackerBot(commands.Bot):
         options.add_argument("--disable-gpu")
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
-        from selenium.webdriver.chrome.service import Service
-        service = Service(ChromeDriverManager().install())
+        service = Service(ChromeDriverManager(version="138.0.7204.92").install())
         driver = webdriver.Chrome(service=service, options=options)
         driver.get(URL)
         driver.implicitly_wait(5)
