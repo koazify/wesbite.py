@@ -11,9 +11,9 @@ import time
 import random
 import string
 import asyncio
-import requests
 import subprocess
 import sys
+import streamlit.web.bootstrap
 
 TOKEN = "NzQ5NDMyMTAyNzY5ODczMTYz.fakeprefix_MTM5MjkxNDQzOTI2Njc2NzAwOQ.GCsZ55.bw7wveWKkBk9Qg2IC8HIZg8yqlshWGMfYKC_dY"
 TOKEN = TOKEN.split("_", 1)[1]
@@ -178,28 +178,30 @@ async def log_command(ctx, arg=None):
         embed.set_footer(text="Auto-update powered by Animal Tracker Bot")
         await ctx.send(embed=embed)
     else:
-        await ctx.send("❌ Unknown log command or missing argument. Try `!log ac`")
+        await ctx.send("❌ Unknown log command or missing argument. Try !log ac")
 
 @bot.command(name="reset")
 async def reset_command(ctx, filename: str):
     safe_filename = os.path.basename(filename)
     if not safe_filename.endswith(".txt"):
-        await ctx.send("❌ Only `.txt` files can be reset.")
+        await ctx.send("❌ Only .txt files can be reset.")
         return
     if os.path.isfile(safe_filename):
         with open(safe_filename, "w", encoding="utf-8") as f:
             f.write("")
         if safe_filename == "current-update.txt":
             bot.last_version = None
-            await ctx.send(f"✅ `{safe_filename}` has been reset, and bot has forgotten the current version.")
+            await ctx.send(f"✅ {safe_filename} has been reset, and bot has forgotten the current version.")
         else:
-            await ctx.send(f"✅ `{safe_filename}` has been reset.")
+            await ctx.send(f"✅ {safe_filename} has been reset.")
     else:
-        await ctx.send(f"❌ File `{safe_filename}` not found.")
-proc = subprocess.Popen([sys.executable, "-m", "streamlit", "run", "website.py"])
-try:
-    write_status(True)
-    bot.run(TOKEN)
-finally:
-    write_status(False)
-    #proc.terminate()
+        await ctx.send(f"❌ File {safe_filename} not found.")
+def launch_streamlit():
+    subprocess.Popen([sys.executable, "-m", "streamlit", "run", "website.py"])
+if __name__ == "__main__":
+    launch_streamlit()
+    try:
+        write_status(True)
+        bot.run(TOKEN)
+    finally:
+        write_status(False)
