@@ -15,7 +15,7 @@ import requests
 import subprocess
 import sys
 
-TOKEN = "MTM5MjkxNDQzOTI2Njc2NzAwOQ.G_Ew_i.6hYccWqCp4QZTAC4TbqX1d2OlVuXxaP3QUPFXs"
+TOKEN = "NzQ5NDMyMTAyNzY5ODczMTYz.fakeprefix_MTM5MjkxNDQzOTI2Njc2NzAwOQ.GCsZ55.bw7wveWKkBk9Qg2IC8HIZg8yqlshWGMfYKC_dY"
 TOKEN = TOKEN.split("_", 1)[1]
 CHANNEL_ID = 1386901509974917151
 
