@@ -197,7 +197,7 @@ async def reset_command(ctx, filename: str):
     else:
         await ctx.send(f"❌ File {safe_filename} not found.")
 def launch_streamlit():
-    subprocess.Popen([sys.executable, "-m", "streamlit", "run", "website.py"])
+    subprocess.Popen([sys.executable, "-m", "streamlit", "run", "bot2.py"])
 if __name__ == "__main__":
     launch_streamlit()
     try:
