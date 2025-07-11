@@ -1,0 +1,5 @@
+streamlit
+requests
+selenium
+webdriver-manager
+discord.py

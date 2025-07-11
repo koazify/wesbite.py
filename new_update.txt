@@ -1,0 +1,10 @@
+Latest Update
+AC 1.30
+Small update this week Mostly small changes and optimizations to the lobby and various fixes.
+
+New
+We maybe sorta left an unreleased item in the loading screen... IYKYK
+Fixes & Changes
+Various tweaks to the lobby
+Various performance optimizations.
+See all updates: Updates
