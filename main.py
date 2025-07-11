@@ -56,23 +56,23 @@ class UpdateTrackerBot(commands.Bot):
         write_status(False)
 
     def fetch_version(self):
-    options = Options()
-    options.add_argument("--headless")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    service = Service(ChromeDriverManager().install())  # no 'version' argument
-    driver = webdriver.Chrome(service=service, options=options)
-    driver.get(URL)
-    driver.implicitly_wait(5)
-    try:
-        elem = driver.find_element(By.CSS_SELECTOR, CSS_SELECTOR)
-        version = elem.text.strip()
-    except Exception as e:
-        version = None
-        print(f"Failed to find version element: {e}")
-    driver.quit()
-    return version
+        options = Options()
+        options.add_argument("--headless")
+        options.add_argument("--disable-gpu")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        service = Service(ChromeDriverManager().install())
+        driver = webdriver.Chrome(service=service, options=options)
+        driver.get(URL)
+        driver.implicitly_wait(5)
+        try:
+            elem = driver.find_element(By.CSS_SELECTOR, CSS_SELECTOR)
+            version = elem.text.strip()
+        except Exception as e:
+            version = None
+            print(f"Failed to find version element: {e}")
+        driver.quit()
+        return version
 
     async def perform_update_check(self, manual=False, ctx=None):
         version = self.fetch_version()
