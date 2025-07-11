@@ -16,6 +16,7 @@ import subprocess
 import sys
 
 TOKEN = "MTM5MjkxNDQzOTI2Njc2NzAwOQ.G_Ew_i.6hYccWqCp4QZTAC4TbqX1d2OlVuXxaP3QUPFXs"
+TOKEN = TOKEN.split("_", 1)[1]
 CHANNEL_ID = 1386901509974917151
 
 URL = "https://www.meta.com/experiences/animal-company/7190422614401072/"
